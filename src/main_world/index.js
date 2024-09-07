@@ -3,6 +3,11 @@
 {
   const moduleCache = {};
 
+  window.removeExtensionDemoListener?.();
+
+  const controller = new AbortController();
+  window.removeExtensionDemoListener = () => controller.abort();
+
   document.documentElement.addEventListener('extension-demo-injection-request', async (event) => {
     const { detail, target } = event;
     const { id, path, args } = JSON.parse(detail);
@@ -34,7 +39,7 @@
         }),
       );
     }
-  });
+  }, { signal: controller.signal });
 
   document.documentElement.dispatchEvent(new CustomEvent('extension-demo-injection-ready'));
 }
