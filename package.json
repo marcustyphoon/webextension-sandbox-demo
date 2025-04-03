@@ -7,7 +7,7 @@
     "build": "web-ext build"
   },
   "devDependencies": {
-    "eslint": "^8.57.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.1",
     "prettier": "^3.5.3",
     "web-ext": "^8.5.0"
